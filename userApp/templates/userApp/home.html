@@ -1,0 +1,171 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+Dynamic Tariff
+{% endblock title %}
+
+{% load static %}
+{% block content %}
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+        <li class="active"><a href="{% url 'baseApp:home' %}">Home</a></li>
+        <li><a href="{% url 'baseApp:about' %}">Team</a></li>
+        <li><a href="{% url 'baseApp:abstract' %}">Abstract</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li class="drop-down"><a href="#">Drop Down</a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li><a href="#">Drop Down 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    
+    {% if user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}" class="get-started-btn">Sign out</a>
+    <!-- <img class="rounded-circle article-img" src="{{ request.user.profile.image.url }}" id="img">  -->
+    {% else %}
+    <a href="{% url 'accounts:login' %}" class="sign-in-btn">Sign in</a>
+    <a href="{% url 'accounts:register' %}" class="get-started-btn">Sign up</a>
+    {% endif %}
+  </div>
+</header>
+
+<div class="container">
+
+  <br>
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Welcome {{user.first_name}} &#128515,</h4>
+    <p></p>
+    <hr>
+    <p class="mb-0"><i class="icofont-info-circle"></i> Please note that our system updates the data only when a load is changed with a minimum interval of 1 minute.</p>
+  </div>
+  {% include 'accounts/_flash_messages.html'%}
+  
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Current Active Load (kW)</th>
+            <td>{{tbl_user.currActiveLoad|floatformat:2}}</td>
+           </tr>
+           <tr>
+            <th scope="row">Current Reactive Load (kVAR)</th>
+            <td>{{tbl_user.currReactiveLoad|floatformat:2}}</td>
+           </tr>
+           <tr>
+            <th scope="row">Total Units Consumed (kWh)</th>
+            <td>{{tbl_user.consumedUnits|floatformat:2}}</td>
+           </tr>
+           <tr>
+            <th scope="row">Total Cost (Rs.)</th>
+            <td>{{tbl_user.bill|floatformat:2}}</td>
+           </tr>
+        </tbody>
+      </table>
+      
+      <div class="card">
+        <div class="card-body">
+          <form action="{% url 'userApp:home' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-row">
+              <div class="col form-group">
+                <label><input type="checkbox" value="1" name="load"> 1kW</label>
+              </div>
+              <div class="col form-group">
+                <label><input type="checkbox" value="10" name="load"> 10kW</label>
+              </div>
+
+              <div class="col form-group">
+                <label><input type="checkbox" value="100" name="load"> 100kW</label>
+              </div>
+              <div class="col form-group">
+                <label><input type="checkbox" value="1000" name="load"> 1MW</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="col form-group">
+                <button type="submit" class="btn get-started-btn" value="1" name="load_action">Add Load</button>
+              </div>
+              <div class="col form-group">
+                <button type="submit" class="btn get-started-btn" value="0" name="load_action">Remove Load</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div class="col-lg-8 col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="alert alert-success" role="alert">
+    <p class="mb-0">Load adding feature is just for demo purpose. In final product, data will be taken in real-time with the help of sensors and it will be stored in a database by using GSM module.</p>
+  </div>
+</div>
+
+{% endblock content %}
+    
+
+{% block script %}
+<script>
+  $(document).ready(function(){
+    var ctx = document.getElementById('lineChart').getContext('2d');
+    Chart.defaults.global.animation.duration = 1500;
+    Chart.defaults.global.legend.display = false;
+    Chart.defaults.global.tooltips.displayColors = false;
+    Chart.defaults.global.title.text = 'Tariff Chart'; 
+    Chart.defaults.global.title.display = true;
+    Chart.defaults.scale.gridLines.color = 'rgba(0, 0, 0, 0.05)';
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{% for item in tbl_cost %} '{{item.hour}}',{% endfor %}],
+            datasets: [{
+
+              backgroundColor: 'rgba(97, 207, 128, 0.4)',
+              hoverBackgroundColor: 'rgba(97, 207, 128, 1)',
+              borderColor: 'rgba(97, 207, 128, 01)',
+              borderWidth: 1,
+
+                data: [{% for item in tbl_cost %} {{item.cost}},{% endfor %}],
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Cost(Rs.)'
+                  },
+                  ticks: {
+                      beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Time(Hr)'
+                  }
+                }]
+            }
+        }
+      });
+    });
+  </script>
+{% endblock script %}
+  

@@ -1,0 +1,123 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  Sign up - Dynamic Tariff
+{% endblock title %}
+
+{% block content %}
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+        <li><a href="{% url 'baseApp:home' %}">Home</a></li>
+        <li><a href="{% url 'baseApp:about' %}">Team</a></li>
+        <li><a href="{% url 'baseApp:abstract' %}">Abstract</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li class="drop-down"><a href="#">Drop Down</a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li><a href="#">Drop Down 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="{% url 'accounts:login' %}" class="sign-in-btn" style="margin-right: 48px;">Sign in</a>
+  </div>
+</header>
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    {% include 'accounts/_flash_messages.html'%}
+
+    <div class="row mt-5 justify-content-center">
+
+      <!-- <div class="col-lg-4 d-none d-sm-block">
+        <div class="info">
+          <div class="address">
+            <i class="icofont-google-map"></i>
+            <h4>Location:</h4>
+            <p>A108 Adam Street, New York, NY 535022</p>
+          </div>
+
+          <div class="email">
+            <i class="icofont-envelope"></i>
+            <h4>Email:</h4>
+            <p>info@example.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="icofont-phone"></i>
+            <h4>Call:</h4>
+            <p>+1 5589 55488 55s</p>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-lg-8 mt-5 mt-lg-0">
+        <form action="{% url 'accounts:register' %}" method="post" role="form" class="php-email-form">
+          {% csrf_token %}
+
+          <div class="form-row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="fname" value="{{data.fname}}" class="form-control" placeholder="First Name" required/>
+            </div>
+            <div class="col-md-6 form-group">
+              <input type="text" name="lname" value="{{data.lname}}" class="form-control" placeholder="Last Name" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col form-group">
+              <input type="email" name="email" value="{{data.email}}" class="form-control" placeholder="Your Email" required/>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="col-md-6 form-group">
+              <select name="category" class="custom-select" required>
+                <option value="">Category</option>
+                <option value="R">Residential</option>
+                <option value="C">Commercial</option>
+                <option value="I">Industrial</option>
+              </select>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <select name="location" class="custom-select" required>
+                <option value="">Location</option>
+                <option value="10">DHA</option>
+                <option value="11">Gulshan-e-Ravi</option>
+                <option value="12">Iqbal Town</option>
+                <option value="13">Model Town</option>
+                <option value="14">Mughalpura</option>
+                <option value="15">Qurtaba</option>
+                <option value="16">Sabzazar</option>
+                <option value="17">Shahadara</option>
+                <option value="18">Township</option>
+                <option value="19">UET</option>
+                <option value="20">Wapda Town</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6 form-group">
+              <input type="password" name="password1" class="form-control" placeholder="Password" required>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+            </div>
+          </div>
+
+          <div class="text-center"><button type="submit">Sign up</button></div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</section><!-- End Contact Section -->
+
+{% endblock %}

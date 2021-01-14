@@ -1,0 +1,64 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block content %}
+        <ul class="left">
+            <li> This is a test Page</li>
+        </ul>
+        <ul class="right">
+            <li><a href="{% url 'userApp:home' %}">Home</a></li>
+            <li><a href="{% url 'userApp:profile' %}">Profile</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row center">
+        <div class="col s12 m8 l6 offset-l3">
+            <div class="card">
+<!--                {{data.username}} <br>
+                {{data.email}} <br>
+                {{data.first_name}} <br>
+                {{data.last_name}} <br>
+-->
+                <div class="card-title">
+                    <h4 class="brand-text" style="padding-top: 15px;"> Test Form </h4>
+                </div>
+
+                <div class="card-content">
+ 
+                    {% include 'accounts/_flash_messages.html'%}
+
+                    <form action="{% url 'userApp:test' %}" method="post">
+                        {% csrf_token %}
+
+                        <div class="input-field col s6">
+                            <input name="var1" value="{{data.var1}}" placeholder="First Number" type="text" class="validate">
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input name="var2" value="{{data.var2}}" placeholder="Second Number" type="text" class="validate">
+                        </div>
+
+                        <p class="left-align"> Result:  {{context.result}}</p>
+
+                        <div class="input-field col s6 s6">
+                            <select name="category" class="validate">
+                              <option value="" disabled selected>Choose Category</option>
+                              <option value="{{data.categoryR}}">Residential</option>
+                              <option value="{{data.categoryc}}">Commercial</option>
+                              <option value="{{data.categoryI}}">Industrial</option>
+                            </select>
+                        </div>
+
+                        <input type="submit" class="btn brand z-depth-0" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

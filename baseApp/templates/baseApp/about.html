@@ -1,0 +1,175 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  About - Dynamic Tariff
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+        <li><a href="{% url 'baseApp:home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'baseApp:about' %}">Team</a></li>
+        <li><a href="{% url 'baseApp:abstract' %}">Abstract</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li class="drop-down"><a href="#">Drop Down</a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li><a href="#">Drop Down 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}" class="get-started-btn">Sign out</a>    
+    {% else %}
+    <a href="{% url 'accounts:login' %}" class="sign-in-btn">Sign in</a>
+    <a href="{% url 'accounts:register' %}" class="get-started-btn">Sign up</a>
+    {% endif %}
+  </div>
+</header>
+
+<main id="main">
+<!-- ======= About Section ======= -->
+<section id="trainers" class="trainers">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-lg-3 col-md-6 d-flex justify-content-center align-items-stretch">
+          <div class="member">
+            <img src="{% static 'img/team/hunain.jpg' %}" class="img-fluid" alt="">
+            <div class="member-content">
+              <h4>H. Muhammad Hunain</h4>
+              <span>2017-EE-16</span>
+              <p>
+                2017ee16@student.uet.edu.pk
+              </p>
+              <div class="social">
+                <a href=""><i class="icofont-twitter"></i></a>
+                <a href=""><i class="icofont-facebook"></i></a>
+                <a href=""><i class="icofont-instagram"></i></a>
+                <a href=""><i class="icofont-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 d-flex justify-content-center align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/team/faizan.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Syed Faizan Ali</h4>
+                <span>2017-EE-17</span>
+                <p>
+                  2017ee17@student.uet.edu.pk
+                </p>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex justify-content-center align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/team/Rao.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Rao Ali Hassan Khan</h4>
+                <span>2017-EE-37</span>
+                <p>
+                  2017ee37@student.uet.edu.pk
+                </p>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex justify-content-center align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/team/tariq.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Tariq Mehmood</h4>
+                <span>2017-EE-40</span>
+                <p>
+                  2017ee40@student.uet.edu.pk
+                </p>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Testimonials</h2>
+      <p>What are they saying</p>
+    </div>
+
+    <div class="owl-carousel testimonials-carousel" data-aos="zoom-in" data-aos-delay="100">
+
+      <div class="testimonial-wrap">
+        <div class="testimonial-item">
+          <!-- <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> -->
+          <h3>Person 1</h3>
+          <h4>Ceo &amp; Founder</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            This is a testimonial body and it will contain the testimonials of persons about dynamic tariff
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+      </div>
+
+      <div class="testimonial-wrap">
+        <div class="testimonial-item">
+          <!-- <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt=""> -->
+          <h3>Person 2</h3>
+          <h4>Designer</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            This is a testimonial body and it will contain the testimonials of persons about dynamic tariff
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+      </div>
+
+      <div class="testimonial-wrap">
+        <div class="testimonial-item">
+          <!-- <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt=""> -->
+          <h3>Person 3</h3>
+          <h4>Store Owner</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            This is a testimonial body and it will contain the testimonials of persons about dynamic tariff
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Testimonials Section -->
+
+</main><!-- End #main -->
+
+{% endblock %}

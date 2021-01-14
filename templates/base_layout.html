@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<title>
+		{% block title %}
+		{% endblock title %}
+	</title>
+
+	<!-- Favicons -->
+	<link href="{% static 'img/favicon.png' %}" rel="icon">
+	<link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+	<!--Chart js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" ></script>
+
+	<!-- Template Main CSS File -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+  
+</head>
+
+<body>
+
+	<!-- ======= Header ======= -->
+	<header id="header" > <!--class="fixed-top"-->
+	  <div class="container d-flex align-items-center">
+  
+		<!-- <h1 class="logo mr-auto"><a href="{% url 'baseApp:home' %}">DT</a></h1>
+		Uncomment below if you prefer to use an image logo -->
+		<a href="{%url 'baseApp:home'%}" class="logo mr-auto"><img src="{% static 'img/logo1.png' %}" alt="" class="img-fluid"></a>
+  
+  {% block content %}
+	  
+  {% endblock content %}
+	  
+  
+	<!-- ======= Footer ======= -->
+	<footer id="footer">
+  
+	  <div class="footer-top">
+		<div class="container">
+		  <div class="row">
+  
+			<div class="col-lg-3 col-md-6 footer-contact">
+			  <h3>Dynamic Tariff</h3>
+			  <p>
+				Electrical Engineering Department <br>
+				University of Engineering and Technology<br>
+				Lahore <br><br>
+				<strong>Phone:</strong> +92 342 0604998<br>
+				<strong>Email:</strong> 2017FYP01@gmail.com<br>
+			  </p>
+			</div>
+  
+			<div class="col-lg-2 col-md-6 footer-links">
+			  <h4>Useful Links</h4>
+			  <ul>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Home</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:about'%}">About us</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Services</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Terms of service</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Privacy policy</a></li>
+			  </ul>
+			</div>
+  
+			<div class="col-lg-3 col-md-6 footer-links">
+			  <h4>Our Services</h4>
+			  <ul>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Residential Connection</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Commercial Connection</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Industrial Connection</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Service 01</a></li>
+				<li><i class="bx bx-chevron-right"></i> <a href="{% url 'baseApp:home'%}">Service 02</a></li>
+			  </ul>
+			</div>
+  
+			<div class="col-lg-4 col-md-6 footer-newsletter">
+			  <h4>Join Our Newsletter</h4>
+			  <p>Get latest news and remain updated about the latest tariff trends</p>
+			  <form action="{% url 'baseApp:home'%}" method="get">
+				<input type="email" name="email"><input type="submit" value="Subscribe">
+			  </form>
+			</div>
+  
+		  </div>
+		</div>
+	  </div>
+  
+	  <div class="container d-md-flex py-4">
+		<div class="social-links text-center text-md-right pt-3 pt-md-0">
+		  <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+		  <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+		  <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+		  <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+		  <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+		</div>
+	  </div>
+	</footer><!-- End Footer -->
+  
+	<a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+	<div id="preloader"></div>
+  
+	<!-- Vendor JS Files -->
+	<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+	<script src="{% static 'vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'vendor/counterup/counterup.min.js' %}"></script>
+	<script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'vendor/aos/aos.js' %}"></script>
+  
+	<!-- Template Main JS File -->
+	<script src="{% static 'js/main.js' %}"></script>
+
+	
+	{% block script %}
+		
+	{% endblock script %}
+		
+  </body>
+  
+  </html>
