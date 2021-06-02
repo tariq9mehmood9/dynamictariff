@@ -1,0 +1,104 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  Dynamic Tariff
+{% endblock title %}
+
+{% load static %}
+{% block content %}
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+        <li class="active"><a href="{% url 'baseApp:home' %}">Home</a></li>
+        <li><a href="{% url 'baseApp:about' %}">Team</a></li>
+        <li><a href="{% url 'baseApp:abstract' %}">Abstract</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li class="drop-down"><a href="#">Drop Down</a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li><a href="#">Drop Down 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    
+    {% if user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}" class="get-started-btn">Sign out</a>    
+    {% else %}
+    <a href="{% url 'accounts:login' %}" class="sign-in-btn">Sign in</a>
+    <a href="{% url 'accounts:register' %}" class="get-started-btn">Sign up</a>
+    {% endif %}
+  </div>
+</header>
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-content-center align-items-center">
+<div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+  <h1>With Great <span style="color: #3ac162;">Power </span>,<br>Comes Great <span style="color: #3ac162;">Electricity Bill</span></h1>
+  <h2>We are team of electrical engineering students making tariff dynamic</h2>
+  <a href="{% url 'accounts:login' %}" class="btn-get-started">Get Started</a>
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>About</h2>
+      <p>About Us</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-5 offset-lg-1 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+        <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+        <h3>Dynamic tariff is one of the emerging areas of research in the retail electricity industry</h3>
+        <p class="font-italic">
+          Dynamic tariff is actually dynamic with respect to time i.e. price per unit of electricity is changing on the basis of power generation, cost and demand
+        </p>
+        <ul>
+          <li><i class="icofont-check-circled"></i> Electricity at cheapest possible cost</li>
+          <li><i class="icofont-check-circled"></i> Hourly predicted tariff</li>
+          <li><i class="icofont-check-circled"></i> Reduced power loss</li>
+          <li><i class="icofont-check-circled"></i> Online tracking and billing system</li>
+          <li><i class="icofont-check-circled"></i> Android app to facilitate customers</li>
+        </ul>
+        <p>
+          Help us reduce the load shedding and improve health of the power distribution system by bringing down peak load demand
+        </p>
+        <a href="{% url 'baseApp:abstract' %}" class="learn-more-btn">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+
+<!-- ======= Counts Section ======= -->
+<section id="counts" class="counts section-bg">
+  <div class="container">
+
+    <div class="row counters">
+
+      <div class="col-6 text-center">
+        <span data-toggle="counter-up">1232</span>
+        <p>Active Connections</p>
+      </div>
+
+      <div class="col-6 text-center">
+        <span data-toggle="counter-up">64</span>
+        <p>Employees</p>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Counts Section -->
+
+</main><!-- End #main -->
+
+
+{% endblock %}

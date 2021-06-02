@@ -1,0 +1,68 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  Abstract - Dynamic Tariff
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+        <li><a href="{% url 'baseApp:home' %}">Home</a></li>
+        <li><a href="{% url 'baseApp:about' %}">Team</a></li>
+        <li class="active"><a href="{% url 'baseApp:abstract' %}">Abstract</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li class="drop-down"><a href="#">Drop Down</a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li><a href="#">Drop Down 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}" class="get-started-btn">Sign out</a>    
+    {% else %}
+    <a href="{% url 'accounts:login' %}" class="sign-in-btn">Sign in</a>
+    <a href="{% url 'accounts:register' %}" class="get-started-btn">Sign up</a>
+    {% endif %}
+  </div>
+</header>
+
+<main id="main">
+    
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+          <h2>Abstract</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Section Abstract ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-10 col-sm-6">
+            <p class="lead text-justify">
+                In Pakistan, electric power is being generated from multiple resources i.e. thermal, hydral, solar, wind power plants etc. The power generation cost is different from all these sources e.g. cost of generation from hydral and solar plant is much cheaper as compared to thermal plant. Cost is different even at different times in a day due to availability of resources e.g. solar power plant produces much in daytime but don’t contribute at night. Based on the diversity of the generation cost, <strong><span style="color: #5fcf80;">National Electric Power Regulatory Authority (NEPRA)</span></strong> defines a centralized fixed price per unit for all consumers and this price is implemented by <strong><span style="color: #5fcf80;">Distribution Companies (DISCOs)</span></strong> in the form of <strong><span style="color: #5fcf80;">Block Rate Tariff</span></strong>.
+                <br><br>
+                Block Rate Tariff is not a suitable choice for consumers as well as for DISCOs. Residential as well as Industrial consumers pay the same price no matter they utilize power during peak hours or off-peak hours. For example, industries operate in morning when load demand is relatively less and generation cost is low but they are charged on the same per unit price. On the other hand, in winters, hydral power production is low and most of the demand is met by thermal power production. In this case, generation cost is higher but DISCOs can only demand price defined by NEPRA. Moreover, current system suffers from too much power loss during peak load hours. 
+                <br><br>
+                Our Final Year Project proposes a solution to this problem in the form of <strong><span style="color: #5fcf80;">Dynamic Tariff</span></strong>. Dynamic tariff is actually dynamic with respect to time i.e. price per unit of electricity is changing on the basis of power generation, cost and demand. This type of tariff is much better as compared to fixed price tariff. Following this tariff, consumers will pay for the exact generation cost of electricity at that specific time. Dynamic tariff can be calculated after every hour, based on the details of generation capability and generation cost of multiple power plants and load demand at that time. Minimum Dynamic tariff can be achieved by applying machine learning techniques.
+                <br><br>
+                The FYP will be implemented on multiple <strong><span style="color: #5fcf80;">Microgrids</span></strong> synchronized with conventional <strong><span style="color: #5fcf80;">Utility Grid</span></strong>. One of the microgrid is of renewable source i.e. solar power plant in our case and other may be steam or diesel power plant. All these grids will contribute to a common bus bar and will feed a load. Load requirement will be met along with minimum cost of electricity with the <strong><span style="color: #5fcf80;">Economic Dispatch Algorithm</span></strong>.
+                <br><br>
+                Moreover, our FYP includes <strong><span style="color: #5fcf80;">Unit Price Forecasting</span></strong> i.e. consumer will be informed about the unit price calculated on hourly basis, for the upcoming hours or days through <strong><span style="color: #5fcf80;">Web App</span></strong> and <strong><span style="color: #5fcf80;">Android App</span></strong>. This forecasting will be done using some <strong><span style="color: #5fcf80;">Machine Learning Algorithm</span></strong> on the basis of previously recorded annual data of generation and trend of load demand. This will help people to reduce their bill price by shifting their heavy load usage to time slots when unit price is low. There will be a change in life style of people if this is implemented. By this, some of the peak load will be shifted to off-peak time and peak losses will be lower.
+            </p>
+        </div>
+        </div>
+        </div>
+    </section>
+</main><!-- End #main -->
+
+
+{% endblock %}
